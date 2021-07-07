@@ -1,0 +1,41 @@
+buildscript {
+	repositories {
+		mavenCentral()
+
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.4.5")
+		classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
+	}
+}
+
+group = 'com.chinthakad.poc'
+version = '0.0.1-SNAPSHOT'
+
+subprojects {
+	buildscript {
+		repositories {
+			mavenCentral()
+
+		}
+		dependencies {
+			classpath("org.springframework.boot:spring-boot-gradle-plugin:2.4.5")
+			classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
+		}
+	}
+	repositories {
+		mavenCentral()
+	}
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	ext {
+		set('springCloudVersion', "2020.0.3")
+	}
+	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		}
+	}
+}

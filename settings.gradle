@@ -1,0 +1,4 @@
+rootProject.name = 'circuitbreaker-demo'
+include 'producer'
+include 'consumer'
+
